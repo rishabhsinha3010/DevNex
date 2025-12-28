@@ -3,8 +3,9 @@
 @theme {
     --font-sans: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     --font-heading: Outfit, system-ui, sans-serif;
-    --color-navy: #001F3F;
-    --color-cyan: #00E5FF;
+    --color-navy: #020617; /* Slate 950 - Premium Dark */
+    --color-cyan: #00E5FF; /* Keeping Cyan for high contrast pop */
+    --color-accent: #3b82f6; /* Blue 500 */
 }
 
 :root {

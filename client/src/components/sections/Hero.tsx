@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Button } from '../ui/Button';
 import { ArrowRight, Play } from 'lucide-react';
+import { ThreeScene } from '../ui/ThreeScene';
 
 export function Hero() {
     return (
@@ -69,34 +70,32 @@ export function Hero() {
                         </div>
                     </motion.div>
 
-                    {/* Hero Image */}
+                    {/* Hero Image / 3D Scene */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9, y: 30 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="relative hidden lg:block"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1 }}
+                        className="relative hidden lg:block h-[600px] w-full"
                     >
-                        <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 group">
-                            <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent z-10 pointer-events-none" />
-                            <img
-                                src="/hero-image.png"
-                                alt="Indian Developers Team"
-                                className="w-full h-auto object-cover transform transition-transform duration-[2s] group-hover:scale-105"
-                            />
+                        <div className="relative w-full h-full">
+                            {/* 3D Scene */}
+                            <div className="absolute inset-0 z-10">
+                                <ThreeScene className="w-full h-full" />
+                            </div>
 
                             {/* Floating Badge 1 */}
                             <motion.div
                                 initial={{ x: 50, opacity: 0 }}
                                 animate={{ x: 0, opacity: 1 }}
                                 transition={{ delay: 0.8 }}
-                                className="absolute top-10 right-10 z-20 bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-2xl shadow-xl flex items-center gap-4 max-w-xs"
+                                className="absolute top-10 right-10 z-20 bg-white/5 backdrop-blur-xl border border-white/10 p-4 rounded-2xl shadow-2xl flex items-center gap-4 max-w-xs"
                             >
                                 <div className="w-12 h-12 bg-gradient-to-tr from-cyan to-blue-600 rounded-full flex items-center justify-center text-navy font-bold text-xl">
                                     🚀
                                 </div>
                                 <div>
-                                    <p className="text-white font-bold">Fast Delivery</p>
-                                    <p className="text-gray-300 text-xs">Launch in weeks, not months</p>
+                                    <p className="text-white font-bold">Future Ready</p>
+                                    <p className="text-gray-400 text-xs">Next-gen web technologies</p>
                                 </div>
                             </motion.div>
 
@@ -105,10 +104,10 @@ export function Hero() {
                                 initial={{ y: 50, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ delay: 1 }}
-                                className="absolute bottom-10 left-10 z-20 bg-navy/80 backdrop-blur-xl border border-white/20 p-5 rounded-2xl shadow-xl"
+                                className="absolute bottom-10 left-10 z-20 bg-navy/80 backdrop-blur-xl border border-white/10 p-5 rounded-2xl shadow-2xl"
                             >
                                 <p className="text-cyan font-heading font-bold text-4xl mb-1">100%</p>
-                                <p className="text-white text-sm font-medium">Satisfaction Guarantee</p>
+                                <p className="text-white text-sm font-medium">Immersive Experience</p>
                             </motion.div>
                         </div>
                     </motion.div>
