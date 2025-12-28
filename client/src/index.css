@@ -3,8 +3,10 @@
 @theme {
     --font-sans: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     --font-heading: Outfit, system-ui, sans-serif;
-    --color-navy: #001F3F;
+    --color-navy: #000000;
+    /* Pitch Black for maximum contrast */
     --color-cyan: #00E5FF;
+    --color-accent: #3b82f6;
 }
 
 :root {

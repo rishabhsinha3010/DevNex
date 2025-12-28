@@ -1,15 +1,17 @@
 import { motion } from 'framer-motion';
 import { Button } from '../ui/Button';
 import { ArrowRight, Play } from 'lucide-react';
+import { ThreeScene } from '../ui/ThreeScene';
 
 export function Hero() {
     return (
         <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-navy">
-            {/* Background Gradients */}
+            {/* Background Gradients - The Light Source Effect */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-cyan/10 rounded-full blur-[120px] mix-blend-screen animate-pulse" style={{ animationDuration: '4s' }} />
-                <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[150px] mix-blend-screen" />
-                <div className="absolute top-[20%] left-[20%] w-[300px] h-[300px] bg-purple-500/10 rounded-full blur-[100px] mix-blend-screen" />
+                {/* Main Beam hitting the text area */}
+                <div className="absolute top-[-10%] right-[-5%] w-[1000px] h-[1000px] bg-cyan/10 rounded-full blur-[100px] mix-blend-screen opacity-60" />
+                {/* Secondary Ambient Light */}
+                <div className="absolute bottom-[-10%] left-[-20%] w-[800px] h-[800px] bg-blue-600/5 rounded-full blur-[150px] mix-blend-screen" />
             </div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
@@ -69,46 +71,42 @@ export function Hero() {
                         </div>
                     </motion.div>
 
-                    {/* Hero Image */}
+                    {/* Hero Image / 3D Scene */}
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.9, y: 30 }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="relative hidden lg:block"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 1 }}
+                        className="relative hidden lg:block h-[600px] w-full"
                     >
-                        <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-white/10 group">
-                            <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent z-10 pointer-events-none" />
-                            <img
-                                src="/hero-image.png"
-                                alt="Indian Developers Team"
-                                className="w-full h-auto object-cover transform transition-transform duration-[2s] group-hover:scale-105"
-                            />
+                        <div className="relative w-full h-full">
+                            {/* 3D Scene */}
+                            <div className="absolute inset-0 z-10">
+                                <ThreeScene className="w-full h-full" />
+                            </div>
 
-                            {/* Floating Badge 1 */}
+                            {/* Floating Badge 1 - Minimalist Tech */}
                             <motion.div
                                 initial={{ x: 50, opacity: 0 }}
                                 animate={{ x: 0, opacity: 1 }}
                                 transition={{ delay: 0.8 }}
-                                className="absolute top-10 right-10 z-20 bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-2xl shadow-xl flex items-center gap-4 max-w-xs"
+                                className="absolute top-20 right-0 z-20 bg-black/60 backdrop-blur-md border-l-4 border-cyan px-6 py-4 shadow-[0_0_30px_rgba(0,229,255,0.1)] flex flex-col max-w-xs"
                             >
-                                <div className="w-12 h-12 bg-gradient-to-tr from-cyan to-blue-600 rounded-full flex items-center justify-center text-navy font-bold text-xl">
-                                    🚀
-                                </div>
-                                <div>
-                                    <p className="text-white font-bold">Fast Delivery</p>
-                                    <p className="text-gray-300 text-xs">Launch in weeks, not months</p>
-                                </div>
+                                <p className="text-cyan font-bold text-lg mb-1">Core Architecture</p>
+                                <p className="text-gray-400 text-xs tracking-wide">SCALABLE • SECURE • FAST</p>
                             </motion.div>
 
-                            {/* Floating Badge 2 */}
+                            {/* Floating Badge 2 - Minimalist Scale */}
                             <motion.div
                                 initial={{ y: 50, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ delay: 1 }}
-                                className="absolute bottom-10 left-10 z-20 bg-navy/80 backdrop-blur-xl border border-white/20 p-5 rounded-2xl shadow-xl"
+                                className="absolute bottom-20 left-10 z-20"
                             >
-                                <p className="text-cyan font-heading font-bold text-4xl mb-1">100%</p>
-                                <p className="text-white text-sm font-medium">Satisfaction Guarantee</p>
+                                <div className="text-5xl font-heading font-bold text-white mb-2 tracking-tighter">
+                                    10M<span className="text-cyan">+</span>
+                                </div>
+                                <div className="h-1 w-12 bg-gradient-to-r from-cyan to-blue-600 mb-2" />
+                                <p className="text-gray-400 text-sm font-medium uppercase tracking-widest">Requests Handled</p>
                             </motion.div>
                         </div>
                     </motion.div>
