@@ -5,9 +5,12 @@ import { SplineSection } from '../components/sections/SplineSection';
 import { CostCalculator } from '../components/sections/CostCalculator';
 import { Footer } from '../components/layout/Footer';
 
+import { SpecialOfferPopup } from '../components/ui/SpecialOfferPopup';
+
 export function Home() {
     return (
         <main className="bg-navy min-h-screen text-white">
+            <SpecialOfferPopup />
             <Hero />
             <TrustBar />
             <ServiceHighlights />
