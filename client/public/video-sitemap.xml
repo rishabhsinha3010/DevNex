@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+   <url>
+     <loc>https://devnex.in/</loc>
+     <video:video>
+       <video:thumbnail_loc>https://devnex.in/video-poster.png</video:thumbnail_loc>
+       <video:title>DevNex Vision - Future of Tech</video:title>
+       <video:description>An abstract visualization of digital transformation and modern technology services offered by DevNex.</video:description>
+       <video:player_loc>https://devnex.in/coolvideo.mp4</video:player_loc>
+       <video:content_loc>https://devnex.in/coolvideo.mp4</video:content_loc>
+       <video:duration>30</video:duration>
+       <video:publication_date>2025-01-01T00:00:00+00:00</video:publication_date>
+       <video:family_friendly>yes</video:family_friendly>
+       <video:live>no</video:live>
+     </video:video>
+   </url>
+</urlset>

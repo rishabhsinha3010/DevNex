@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Footer } from '../components/layout/Footer';
 import { Code, Smartphone, Layout, Server, Rocket, CheckCircle2, ArrowRight } from 'lucide-react';
 import { Button } from '../components/ui/Button';
+import { SEO } from '../components/seo/SEO';
 
 export function About() {
     const services = [
@@ -47,6 +48,11 @@ export function About() {
 
     return (
         <div className="bg-navy min-h-screen text-white pt-20">
+            <SEO
+                title="About Us"
+                description="Learn about DevNex, our mission, vision, and the team building the future of digital technology."
+                canonicalUrl="https://devnex.in/about"
+            />
             {/* Hero Section */}
             <section className="relative py-20 md:py-32 overflow-hidden">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-cyan/10 blur-[120px] rounded-full pointer-events-none" />

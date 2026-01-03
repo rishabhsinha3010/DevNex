@@ -14,6 +14,7 @@ export function SplineSection() {
                     muted
                     playsInline
                     className="w-full h-full object-cover object-top"
+                    poster="/video-poster.png"
                 >
                     <source src="/coolvideo.mp4" type="video/mp4" />
                     Your browser does not support the video tag.

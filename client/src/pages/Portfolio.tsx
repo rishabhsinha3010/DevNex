@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { ExternalLink, Layers, Smartphone, Layout, X } from 'lucide-react';
 import { Footer } from '../components/layout/Footer';
+import { SEO } from '../components/seo/SEO';
 
 export function Portfolio() {
     const [selectedProject, setSelectedProject] = useState<number | null>(null);
@@ -27,6 +28,11 @@ export function Portfolio() {
 
     return (
         <div className="bg-navy min-h-screen text-white pt-20">
+            <SEO
+                title="Portfolio"
+                description="Explore our work. High-performance websites, engaging mobile apps, and custom digital solutions."
+                canonicalUrl="https://devnex.in/portfolio"
+            />
             <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
                 <div className="text-center mb-16">
                     <motion.h1
