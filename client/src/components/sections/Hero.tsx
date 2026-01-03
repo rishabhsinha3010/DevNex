@@ -6,11 +6,12 @@ import { ThreeScene } from '../ui/ThreeScene';
 export function Hero() {
     return (
         <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-navy">
-            {/* Background Gradients */}
+            {/* Background Gradients - The Light Source Effect */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-                <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-cyan/10 rounded-full blur-[120px] mix-blend-screen animate-pulse" style={{ animationDuration: '4s' }} />
-                <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[150px] mix-blend-screen" />
-                <div className="absolute top-[20%] left-[20%] w-[300px] h-[300px] bg-purple-500/10 rounded-full blur-[100px] mix-blend-screen" />
+                {/* Main Beam hitting the text area */}
+                <div className="absolute top-[-10%] right-[-5%] w-[1000px] h-[1000px] bg-cyan/10 rounded-full blur-[100px] mix-blend-screen opacity-60" />
+                {/* Secondary Ambient Light */}
+                <div className="absolute bottom-[-10%] left-[-20%] w-[800px] h-[800px] bg-blue-600/5 rounded-full blur-[150px] mix-blend-screen" />
             </div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
@@ -40,11 +41,11 @@ export function Hero() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-5">
-                            <Button size="lg" className="group text-lg px-8">
+                            <Button size="lg" className="group text-lg px-8" onClick={() => window.location.href = '/start'}>
                                 Start Your Project
                                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                             </Button>
-                            <Button variant="outline" size="lg" className="text-lg px-8 group">
+                            <Button variant="outline" size="lg" className="text-lg px-8 group" onClick={() => window.location.href = '/portfolio'}>
                                 <Play className="mr-2 w-5 h-5 fill-current" />
                                 View Our Work
                             </Button>
@@ -75,7 +76,7 @@ export function Hero() {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1 }}
-                        className="relative hidden lg:block h-[600px] w-full"
+                        className="relative h-[400px] lg:h-[600px] w-full mt-12 lg:mt-0"
                     >
                         <div className="relative w-full h-full">
                             {/* 3D Scene */}
@@ -83,31 +84,29 @@ export function Hero() {
                                 <ThreeScene className="w-full h-full" />
                             </div>
 
-                            {/* Floating Badge 1 */}
+                            {/* Floating Badge 1 - Core Services */}
                             <motion.div
                                 initial={{ x: 50, opacity: 0 }}
                                 animate={{ x: 0, opacity: 1 }}
                                 transition={{ delay: 0.8 }}
-                                className="absolute top-10 right-10 z-20 bg-white/5 backdrop-blur-xl border border-white/10 p-4 rounded-2xl shadow-2xl flex items-center gap-4 max-w-xs"
+                                className="absolute top-20 right-0 z-20 bg-black/60 backdrop-blur-md border-l-4 border-cyan px-6 py-4 shadow-[0_0_30px_rgba(0,229,255,0.1)] flex flex-col max-w-xs"
                             >
-                                <div className="w-12 h-12 bg-gradient-to-tr from-cyan to-blue-600 rounded-full flex items-center justify-center text-navy font-bold text-xl">
-                                    🚀
-                                </div>
-                                <div>
-                                    <p className="text-white font-bold">Future Ready</p>
-                                    <p className="text-gray-400 text-xs">Next-gen web technologies</p>
-                                </div>
+                                <p className="text-cyan font-bold text-lg mb-1">Our Core Services</p>
+                                <p className="text-gray-400 text-xs tracking-wide">WEB • APP • AUTOMATION</p>
                             </motion.div>
 
-                            {/* Floating Badge 2 */}
+                            {/* Floating Badge 2 - Starter Agency Metric */}
                             <motion.div
                                 initial={{ y: 50, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 transition={{ delay: 1 }}
-                                className="absolute bottom-10 left-10 z-20 bg-navy/80 backdrop-blur-xl border border-white/10 p-5 rounded-2xl shadow-2xl"
+                                className="absolute bottom-20 left-10 z-20"
                             >
-                                <p className="text-cyan font-heading font-bold text-4xl mb-1">100%</p>
-                                <p className="text-white text-sm font-medium">Immersive Experience</p>
+                                <div className="text-5xl font-heading font-bold text-white mb-2 tracking-tighter">
+                                    100<span className="text-cyan">%</span>
+                                </div>
+                                <div className="h-1 w-12 bg-gradient-to-r from-cyan to-blue-600 mb-2" />
+                                <p className="text-gray-400 text-sm font-medium uppercase tracking-widest">Client Focus</p>
                             </motion.div>
                         </div>
                     </motion.div>

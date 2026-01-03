@@ -3,9 +3,53 @@
 @theme {
     --font-sans: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     --font-heading: Outfit, system-ui, sans-serif;
-    --color-navy: #020617; /* Slate 950 - Premium Dark */
-    --color-cyan: #00E5FF; /* Keeping Cyan for high contrast pop */
-    --color-accent: #3b82f6; /* Blue 500 */
+
+    /* Semantic Color Mapping */
+    --color-navy: var(--color-navy);
+    --color-white: var(--color-white);
+    --color-cyan: var(--color-cyan);
+    --color-accent: var(--color-accent);
+
+    /* Override standard grays to adapt */
+    --color-gray-300: var(--color-gray-300);
+    --color-gray-400: var(--color-gray-400);
+    --color-gray-500: var(--color-gray-500);
+    --color-gray-800: var(--color-gray-800);
+}
+
+:root {
+    /* Default Dark Mode */
+    --color-navy: #000000;
+    --color-white: #ffffff;
+    --color-cyan: #00E5FF;
+    --color-accent: #3b82f6;
+
+    --color-gray-300: #d1d5db;
+    --color-gray-400: #9ca3af;
+    --color-gray-500: #6b7280;
+    --color-gray-800: #1f2937;
+
+    color-scheme: dark;
+}
+
+[data-theme="light"] {
+    /* Light Mode - Inverted Colors */
+    --color-navy: #ffffff;
+    /* Background becomes white */
+    --color-white: #0f172a;
+    /* Text becomes dark slate */
+    --color-cyan: #0891b2;
+    /* Cyan becomes darker/readable */
+    --color-accent: #2563eb;
+
+    --color-gray-300: #374151;
+    /* Replaces light gray text with dark gray */
+    --color-gray-400: #4b5563;
+    --color-gray-500: #6b7280;
+    --color-gray-800: #f3f4f6;
+    /* Replaces dark gray backgrounds with light gray */
+
+    color-scheme: light;
 }
 
 :root {
