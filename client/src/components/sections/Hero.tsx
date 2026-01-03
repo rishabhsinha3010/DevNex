@@ -41,11 +41,11 @@ export function Hero() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-5">
-                            <Button size="lg" className="group text-lg px-8">
+                            <Button size="lg" className="group text-lg px-8" onClick={() => window.location.href = '/start'}>
                                 Start Your Project
                                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                             </Button>
-                            <Button variant="outline" size="lg" className="text-lg px-8 group">
+                            <Button variant="outline" size="lg" className="text-lg px-8 group" onClick={() => window.location.href = '/portfolio'}>
                                 <Play className="mr-2 w-5 h-5 fill-current" />
                                 View Our Work
                             </Button>
@@ -76,7 +76,7 @@ export function Hero() {
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1 }}
-                        className="relative hidden lg:block h-[600px] w-full"
+                        className="relative h-[400px] lg:h-[600px] w-full mt-12 lg:mt-0"
                     >
                         <div className="relative w-full h-full">
                             {/* 3D Scene */}
@@ -84,18 +84,18 @@ export function Hero() {
                                 <ThreeScene className="w-full h-full" />
                             </div>
 
-                            {/* Floating Badge 1 - Minimalist Tech */}
+                            {/* Floating Badge 1 - Core Services */}
                             <motion.div
                                 initial={{ x: 50, opacity: 0 }}
                                 animate={{ x: 0, opacity: 1 }}
                                 transition={{ delay: 0.8 }}
                                 className="absolute top-20 right-0 z-20 bg-black/60 backdrop-blur-md border-l-4 border-cyan px-6 py-4 shadow-[0_0_30px_rgba(0,229,255,0.1)] flex flex-col max-w-xs"
                             >
-                                <p className="text-cyan font-bold text-lg mb-1">Core Architecture</p>
-                                <p className="text-gray-400 text-xs tracking-wide">SCALABLE • SECURE • FAST</p>
+                                <p className="text-cyan font-bold text-lg mb-1">Our Core Services</p>
+                                <p className="text-gray-400 text-xs tracking-wide">WEB • APP • AUTOMATION</p>
                             </motion.div>
 
-                            {/* Floating Badge 2 - Minimalist Scale */}
+                            {/* Floating Badge 2 - Starter Agency Metric */}
                             <motion.div
                                 initial={{ y: 50, opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
@@ -103,10 +103,10 @@ export function Hero() {
                                 className="absolute bottom-20 left-10 z-20"
                             >
                                 <div className="text-5xl font-heading font-bold text-white mb-2 tracking-tighter">
-                                    10M<span className="text-cyan">+</span>
+                                    100<span className="text-cyan">%</span>
                                 </div>
                                 <div className="h-1 w-12 bg-gradient-to-r from-cyan to-blue-600 mb-2" />
-                                <p className="text-gray-400 text-sm font-medium uppercase tracking-widest">Requests Handled</p>
+                                <p className="text-gray-400 text-sm font-medium uppercase tracking-widest">Client Focus</p>
                             </motion.div>
                         </div>
                     </motion.div>

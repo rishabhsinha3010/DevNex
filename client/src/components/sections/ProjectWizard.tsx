@@ -111,7 +111,7 @@ export function ProjectWizard() {
             name: formData.name,
             email: formData.email,
             phone: `${formData.countryCode} ${formData.phone}`,
-            packageType: 'Custom Wizard',
+            packageType: 'Custom',
             description: formData.description,
             websiteStatus: formData.websiteStatus,
             budget: formData.budget || 'Not specified',
@@ -333,7 +333,7 @@ export function ProjectWizard() {
                             type="text"
                             className="w-full bg-black/40 border border-white/10 rounded-xl py-2 px-4 text-white text-sm placeholder:text-gray-600 focus:outline-none focus:border-cyan/50"
                             placeholder="Enter your budget (e.g. ₹15k)"
-                            value={formData.budget}
+                            value={formData.budget || ''}
                             onChange={(e) => updateForm('budget', e.target.value)}
                         />
                     </div>
@@ -395,7 +395,7 @@ export function ProjectWizard() {
                             type="text"
                             className="w-full bg-black/40 border border-white/10 rounded-xl py-2 px-4 text-white text-sm placeholder:text-gray-600 focus:outline-none focus:border-cyan/50"
                             placeholder="Enter your budget (e.g. ₹25k)"
-                            value={formData.budget}
+                            value={formData.budget || ''}
                             onChange={(e) => updateForm('budget', e.target.value)}
                         />
                     </div>
@@ -461,7 +461,7 @@ export function ProjectWizard() {
                                 type="text"
                                 className="w-full bg-black/40 border border-white/10 rounded-xl py-2 px-4 text-white text-sm placeholder:text-gray-600 focus:outline-none focus:border-cyan/50"
                                 placeholder="e.g. 1 month"
-                                value={formData.timeline}
+                                value={formData.timeline || ''}
                                 onChange={(e) => updateForm('timeline', e.target.value)}
                             />
                         </div>
@@ -471,7 +471,7 @@ export function ProjectWizard() {
                                 type="text"
                                 className="w-full bg-black/40 border border-white/10 rounded-xl py-2 px-4 text-white text-sm placeholder:text-gray-600 focus:outline-none focus:border-cyan/50"
                                 placeholder="Your budget"
-                                value={formData.budget}
+                                value={formData.budget || ''}
                                 onChange={(e) => updateForm('budget', e.target.value)}
                             />
                         </div>

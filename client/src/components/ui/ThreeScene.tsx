@@ -3,25 +3,37 @@ import { OrbitControls, Stars, PerspectiveCamera, Torus, Sparkles, Text, Billboa
 import { useRef } from 'react';
 import * as THREE from 'three';
 
-// Logo URLs
-const LOGOS = {
-    react: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/512px-React-icon.svg.png",
-    node: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/512px-Node.js_logo.svg.png",
-    typescript: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/512px-Typescript_logo_2020.svg.png",
-};
-
-function TechPlanet({ name, iconUrl, position, size = 0.6 }: { name: string; iconUrl: string; position: [number, number, number]; size?: number }) {
+function TechPlanet({ name, color, position, size = 0.4 }: { name: string; color: string; position: [number, number, number]; size?: number }) {
     return (
         <group position={position}>
-            {/* Logo Image */}
-            <Billboard>
-                <Image url={iconUrl} scale={[size, size]} transparent />
-            </Billboard>
+            {/* Planet Sphere */}
+            <mesh>
+                <sphereGeometry args={[size, 32, 32]} />
+                <meshStandardMaterial
+                    color={color}
+                    roughness={0.3}
+                    metalness={0.8}
+                    emissive={color}
+                    emissiveIntensity={0.2}
+                />
+            </mesh>
+
+            {/* Glow/Atmosphere */}
+            <mesh scale={[1.2, 1.2, 1.2]}>
+                <sphereGeometry args={[size, 32, 32]} />
+                <meshBasicMaterial
+                    color={color}
+                    transparent
+                    opacity={0.15}
+                    side={THREE.BackSide}
+                />
+            </mesh>
 
             {/* Label Below */}
-            <Billboard position={[0, -size / 2 - 0.3, 0]}>
+            <Billboard position={[0, -size - 0.4, 0]}>
                 <Text
-                    fontSize={0.2}
+                    fontSize={0.3}
+                    font="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hjp-Ek-_EeA.woff"
                     color="white"
                     anchorX="center"
                     anchorY="top"
@@ -36,28 +48,73 @@ function TechPlanet({ name, iconUrl, position, size = 0.6 }: { name: string; ico
 }
 
 function OrbitingPlanets() {
-    const groupRef1 = useRef<THREE.Group>(null!);
-    const groupRef2 = useRef<THREE.Group>(null!);
+    // Refs for the planets themselves to update positions
+    const planet1Ref = useRef<THREE.Group>(null!);
+    const planet2Ref = useRef<THREE.Group>(null!);
+    const planet3Ref = useRef<THREE.Group>(null!);
+    const planet4Ref = useRef<THREE.Group>(null!);
 
     useFrame((state) => {
         const time = state.clock.getElapsedTime();
-        groupRef1.current.rotation.z = time * 0.1 + Math.PI / 6;
-        groupRef2.current.rotation.z = -time * 0.15 - Math.PI / 6;
+
+        // Horizontal Orbit (Website, App)
+        // Radius 2.8, Speed 0.1
+        const angle1 = time * 0.1 + Math.PI / 6;
+        if (planet1Ref.current) {
+            planet1Ref.current.position.x = 2.8 * Math.cos(angle1);
+            planet1Ref.current.position.y = 2.8 * Math.sin(angle1);
+        }
+        if (planet2Ref.current) {
+            planet2Ref.current.position.x = 2.8 * Math.cos(angle1 + Math.PI); // Opposite side
+            planet2Ref.current.position.y = 2.8 * Math.sin(angle1 + Math.PI);
+        }
+
+        // Vertical Orbit (Automation, Labs) - Rotated plane simulated by swapping axes or using 3D calc
+        // Rotating around X axis implies movements in Y and Z. 
+        // Original code: groupRef2 rotation=[0, Math.PI/2, 0] then internal rotation Z.
+        // Actually, previous code: groupRef2 (Rot Y=90) -> rotates Z. 
+        // Rot Y=90 means X becomes Z. So it was orbiting in Y-Z plane?
+        // Let's keep it visually interesting. Vertical orbit roughly in Y and Z?
+        // Or simply Y and X but with different phase/inclination?
+        // Let's stick to the previous visual: "Vertical" relative to the first one?
+        // The previous one was groupRef1 (Z rotation) -> X-Y plane orbit.
+        // groupRef2 was slightly different. 
+        // Let's make the second pair orbit in X-Z plane (Horizontal flat) or Y-Z (Vertical depth)?
+        // Previous: groupRef2 rotation [0, PI/2, 0]. Then inside, rotation Z.
+        // If Y is up, rotation Z is in X-Y plane.
+        // Rotate Y=90 -> X becomes Z. So it was Z-Y plane.
+
+        const angle2 = -time * 0.15 - Math.PI / 6;
+        if (planet3Ref.current) {
+            // Z-Y plane orbit (Automation)
+            planet3Ref.current.position.z = 4 * Math.cos(angle2);
+            planet3Ref.current.position.y = 4 * Math.sin(angle2);
+            planet3Ref.current.position.x = 0;
+        }
+        if (planet4Ref.current) {
+            // Z-Y plane orbit (Labs) - Opposite
+            planet4Ref.current.position.z = 4 * Math.cos(angle2 + Math.PI);
+            planet4Ref.current.position.y = 4 * Math.sin(angle2 + Math.PI);
+            planet4Ref.current.position.x = 0;
+        }
     });
 
     return (
         <group>
-            <group ref={groupRef1}>
-                {/* React & React Native share the logo in this context or use generic if preferred. Using React logo for both for now implies ecosystem. */}
-                <TechPlanet name="React" iconUrl={LOGOS.react} position={[2.8, 0, 0]} />
-                <TechPlanet name="React Native" iconUrl={LOGOS.react} position={[-2.8, 0, 0]} />
+            {/* Website & App (X-Y Plane Orbit) */}
+            <group ref={planet1Ref}>
+                <TechPlanet name="Website" color="#06b6d4" position={[0, 0, 0]} />
+            </group>
+            <group ref={planet2Ref}>
+                <TechPlanet name="App" color="#a855f7" position={[0, 0, 0]} />
             </group>
 
-            <group ref={groupRef2} rotation={[0, Math.PI / 2, 0]}>
-                <group rotation={[0, Math.PI / 2, 0]}>
-                    <TechPlanet name="Node.js" iconUrl={LOGOS.node} position={[0, 4, 0]} size={0.8} />
-                    <TechPlanet name="TypeScript" iconUrl={LOGOS.typescript} position={[0, -4, 0]} size={0.6} />
-                </group>
+            {/* Automation & Labs (Z-Y Plane Orbit - "Vertical" roughly) */}
+            <group ref={planet3Ref}>
+                <TechPlanet name="Automation" color="#10b981" position={[0, 0, 0]} size={0.5} />
+            </group>
+            <group ref={planet4Ref}>
+                <TechPlanet name="Digital Transformation" color="#FACC15" position={[0, -4, 0]} size={0.6} />
             </group>
         </group>
     );

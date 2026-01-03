@@ -3,6 +3,7 @@ import { TrustBar } from '../components/sections/TrustBar';
 import { ServiceHighlights } from '../components/sections/ServiceHighlights';
 import { SplineSection } from '../components/sections/SplineSection';
 import { CostCalculator } from '../components/sections/CostCalculator';
+import { FAQ } from '../components/sections/FAQ';
 import { Footer } from '../components/layout/Footer';
 
 import { SpecialOfferPopup } from '../components/ui/SpecialOfferPopup';
@@ -16,6 +17,7 @@ export function Home() {
             <ServiceHighlights />
             <SplineSection />
             <CostCalculator />
+            <FAQ />
             <Footer />
         </main>
     );

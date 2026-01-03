@@ -1,4 +1,4 @@
-import { Code, Smartphone, Rocket } from 'lucide-react';
+import { Code, Smartphone, Rocket, Bot } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export function ServiceHighlights() {
@@ -18,8 +18,14 @@ export function ServiceHighlights() {
         {
             icon: Rocket,
             title: 'Digital Transformation',
-            description: 'Modernize your legacy business processes with custom software solutions and automation.',
+            description: 'Modernize your legacy business processes with custom software solutions.',
             gradient: 'from-orange-500/20 to-yellow-500/20'
+        },
+        {
+            icon: Bot,
+            title: 'Automation',
+            description: 'Streamline workflows and reduce manual effort with intelligent bots and process automation.',
+            gradient: 'from-teal-500/20 to-emerald-500/20'
         },
     ];
 
@@ -37,7 +43,7 @@ export function ServiceHighlights() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {services.map((service, index) => (
                         <motion.div
                             key={index}

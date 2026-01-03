@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, Heart } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, Mail, Heart } from 'lucide-react';
 
 export function Footer() {
     return (
@@ -21,11 +21,18 @@ export function Footer() {
                             We build the future, today.
                         </p>
                         <div className="flex space-x-4">
-                            {[Twitter, Facebook, Instagram, Linkedin].map((Icon, i) => (
-                                <a key={i} href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-cyan hover:text-navy transition-all duration-300">
-                                    <Icon className="w-5 h-5" />
-                                </a>
-                            ))}
+                            <a href="https://twitter.com/DevNex_online" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-cyan hover:text-navy transition-all duration-300">
+                                <Twitter className="w-5 h-5" />
+                            </a>
+                            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-cyan hover:text-navy transition-all duration-300">
+                                <Facebook className="w-5 h-5" />
+                            </a>
+                            <a href="https://instagram.com/DevNex_online" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-cyan hover:text-navy transition-all duration-300">
+                                <Instagram className="w-5 h-5" />
+                            </a>
+                            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-cyan hover:text-navy transition-all duration-300">
+                                <Linkedin className="w-5 h-5" />
+                            </a>
                         </div>
                     </div>
 
@@ -51,8 +58,9 @@ export function Footer() {
                             {[
                                 { name: 'Web Development', href: '/services/web-dev' },
                                 { name: 'App Development', href: '/services/app-dev' },
-                                { name: 'E-commerce', href: '/services/ecommerce' },
-                                { name: 'Digital Transformation', href: '/services/digital-transformation' },
+                                { name: 'Automation', href: '/coming-soon' },
+                                { name: 'Digital Transformation', href: '/coming-soon' },
+                                { name: 'E-commerce', href: '/coming-soon' },
                             ].map((item) => (
                                 <li key={item.name}>
                                     <Link to={item.href} className="hover:text-cyan transition-colors">
@@ -67,17 +75,9 @@ export function Footer() {
                     <div>
                         <h3 className="text-white font-bold mb-6 font-heading text-lg">Start a Conversation</h3>
                         <ul className="space-y-4 text-gray-400 text-sm">
-                            <li className="flex items-start space-x-3 group">
-                                <MapPin className="w-5 h-5 text-cyan shrink-0 mt-0.5 group-hover:drop-shadow-[0_0_8px_rgba(0,229,255,0.5)] transition-all" />
-                                <span className="group-hover:text-gray-300 transition-colors">123 Tech Park, Hitech City,<br />Hyderabad, Telangana 500081</span>
-                            </li>
-                            <li className="flex items-center space-x-3 group">
-                                <Phone className="w-5 h-5 text-cyan shrink-0 group-hover:drop-shadow-[0_0_8px_rgba(0,229,255,0.5)] transition-all" />
-                                <span className="group-hover:text-gray-300 transition-colors">+91 98765 43210</span>
-                            </li>
                             <li className="flex items-center space-x-3 group">
                                 <Mail className="w-5 h-5 text-cyan shrink-0 group-hover:drop-shadow-[0_0_8px_rgba(0,229,255,0.5)] transition-all" />
-                                <span className="group-hover:text-gray-300 transition-colors">hello@devnex.in</span>
+                                <span className="group-hover:text-gray-300 transition-colors">devnex.online@gmail.com</span>
                             </li>
                         </ul>
                     </div>

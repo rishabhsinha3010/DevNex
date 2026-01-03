@@ -1,13 +1,16 @@
+
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Sparkles } from 'lucide-react';
+import { Menu, X, ChevronDown, Sun, Moon, Sparkles } from 'lucide-react';
+import { useTheme } from '../../context/ThemeContext';
 import { Button } from '../ui/Button';
 import { cn } from '../../lib/utils';
 
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const { theme, toggleTheme } = useTheme();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -20,7 +23,8 @@ export function Navbar() {
     const services = [
         { name: 'Web Development', href: '/services/web-dev' },
         { name: 'App Development', href: '/services/app-dev' },
-        { name: 'Digital Transformation', href: '/services/digital-transformation' },
+        { name: 'Automation', href: '/coming-soon' },
+        { name: 'Digital Transformation', href: '/coming-soon' },
     ];
 
     return (
@@ -76,9 +80,16 @@ export function Navbar() {
                         </Link>
                         <Link to="/about" className="text-gray-300 hover:text-cyan transition-colors font-medium">About Us</Link>
 
-                        <Button variant="glow" size="sm" onClick={() => window.location.href = '/contact'}>
-                            Get a Free Quote
+                        <Button variant="primary" onClick={() => window.location.href = '/start'}>
+                            Get Started
                         </Button>
+                        <button
+                            onClick={toggleTheme}
+                            className="p-2 rounded-full hover:bg-white/10 text-white transition-colors"
+                            aria-label="Toggle theme"
+                        >
+                            {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                        </button>
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -124,8 +135,8 @@ export function Navbar() {
                             </Link>
                             <Link to="/about" onClick={() => setIsOpen(false)} className="block px-4 py-2 text-gray-300 hover:text-cyan font-medium">About Us</Link>
                             <div className="pt-6 px-4">
-                                <Button className="w-full" variant="primary" onClick={() => { setIsOpen(false); window.location.href = '/contact'; }}>
-                                    Get a Free Quote
+                                <Button className="w-full" variant="primary" onClick={() => { setIsOpen(false); window.location.href = '/start'; }}>
+                                    Get Started
                                 </Button>
                             </div>
                         </div>

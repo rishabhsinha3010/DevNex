@@ -1,7 +1,5 @@
 import { motion } from 'framer-motion';
-import { Clock, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { Button } from '../components/ui/Button';
+import { Clock } from 'lucide-react';
 
 export function ComingSoon() {
     return (
@@ -35,7 +33,7 @@ export function ComingSoon() {
                     transition={{ delay: 0.3 }}
                     className="text-xl text-gray-400 max-w-lg mx-auto mb-10 leading-relaxed"
                 >
-                    We're working hard to bring you more detailed information about this product. Stay tuned for updates!
+                    We’re working on adding more details, stay tuned!!
                 </motion.p>
 
                 <motion.div
@@ -43,11 +41,7 @@ export function ComingSoon() {
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.4 }}
                 >
-                    <Link to="/labs">
-                        <Button variant="outline" className="group">
-                            <ArrowLeft className="mr-2 w-4 h-4 group-hover:-translate-x-1 transition-transform" /> Back to Labs
-                        </Button>
-                    </Link>
+
                 </motion.div>
             </div>
         </div>

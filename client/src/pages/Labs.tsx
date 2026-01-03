@@ -111,7 +111,7 @@ export function Labs() {
                     <div className="relative z-10 p-12 md:p-16 text-center border border-white/10 rounded-3xl">
                         <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 font-heading">Our Vision</h2>
                         <p className="max-w-4xl mx-auto text-lg md:text-xl text-gray-300 leading-relaxed">
-                            At DevNexLabs, we aim to build products that are <span className="text-cyan font-semibold">simple to use</span>, <span className="text-purple-400 font-semibold">scalable by design</span>, and <span className="text-white font-semibold">impactful at scale</span>—powered by strong engineering and thoughtful product thinking.
+                            At DevNexLabs, we aim to build products that are <span className="text-cyan font-semibold">simple to use</span>, <span className="text-purple-400 font-semibold">scalable by design</span>, and <span className="text-white font-semibold">impactful at scale</span> powered by strong engineering and thoughtful product thinking.
                         </p>
                     </div>
                 </motion.div>
