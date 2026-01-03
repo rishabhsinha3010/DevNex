@@ -3,7 +3,7 @@ interface SubmissionData {
     name: string;
     email: string;
     phone: string;
-    packageType: 'Starter' | 'Custom';
+    packageType: string;
     description: string;
     websiteStatus?: string;
     budget?: string;

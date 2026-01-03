@@ -1,5 +1,5 @@
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Stars, PerspectiveCamera, Torus, Sparkles, Text, Billboard, Image } from '@react-three/drei';
+import { OrbitControls, Stars, PerspectiveCamera, Torus, Sparkles, Text, Billboard } from '@react-three/drei';
 import { useRef } from 'react';
 import * as THREE from 'three';
 
@@ -48,73 +48,34 @@ function TechPlanet({ name, color, position, size = 0.4 }: { name: string; color
 }
 
 function OrbitingPlanets() {
-    // Refs for the planets themselves to update positions
-    const planet1Ref = useRef<THREE.Group>(null!);
-    const planet2Ref = useRef<THREE.Group>(null!);
-    const planet3Ref = useRef<THREE.Group>(null!);
-    const planet4Ref = useRef<THREE.Group>(null!);
+    // Refs for the rotating groups
+    const group1Ref = useRef<THREE.Group>(null!);
+    const group2Ref = useRef<THREE.Group>(null!);
 
-    useFrame((state) => {
-        const time = state.clock.getElapsedTime();
-
-        // Horizontal Orbit (Website, App)
-        // Radius 2.8, Speed 0.1
-        const angle1 = time * 0.1 + Math.PI / 6;
-        if (planet1Ref.current) {
-            planet1Ref.current.position.x = 2.8 * Math.cos(angle1);
-            planet1Ref.current.position.y = 2.8 * Math.sin(angle1);
-        }
-        if (planet2Ref.current) {
-            planet2Ref.current.position.x = 2.8 * Math.cos(angle1 + Math.PI); // Opposite side
-            planet2Ref.current.position.y = 2.8 * Math.sin(angle1 + Math.PI);
-        }
-
-        // Vertical Orbit (Automation, Labs) - Rotated plane simulated by swapping axes or using 3D calc
-        // Rotating around X axis implies movements in Y and Z. 
-        // Original code: groupRef2 rotation=[0, Math.PI/2, 0] then internal rotation Z.
-        // Actually, previous code: groupRef2 (Rot Y=90) -> rotates Z. 
-        // Rot Y=90 means X becomes Z. So it was orbiting in Y-Z plane?
-        // Let's keep it visually interesting. Vertical orbit roughly in Y and Z?
-        // Or simply Y and X but with different phase/inclination?
-        // Let's stick to the previous visual: "Vertical" relative to the first one?
-        // The previous one was groupRef1 (Z rotation) -> X-Y plane orbit.
-        // groupRef2 was slightly different. 
-        // Let's make the second pair orbit in X-Z plane (Horizontal flat) or Y-Z (Vertical depth)?
-        // Previous: groupRef2 rotation [0, PI/2, 0]. Then inside, rotation Z.
-        // If Y is up, rotation Z is in X-Y plane.
-        // Rotate Y=90 -> X becomes Z. So it was Z-Y plane.
-
-        const angle2 = -time * 0.15 - Math.PI / 6;
-        if (planet3Ref.current) {
-            // Z-Y plane orbit (Automation)
-            planet3Ref.current.position.z = 4 * Math.cos(angle2);
-            planet3Ref.current.position.y = 4 * Math.sin(angle2);
-            planet3Ref.current.position.x = 0;
-        }
-        if (planet4Ref.current) {
-            // Z-Y plane orbit (Labs) - Opposite
-            planet4Ref.current.position.z = 4 * Math.cos(angle2 + Math.PI);
-            planet4Ref.current.position.y = 4 * Math.sin(angle2 + Math.PI);
-            planet4Ref.current.position.x = 0;
-        }
+    useFrame((_, delta) => {
+        // Rotate the groups continuously
+        if (group1Ref.current) group1Ref.current.rotation.z += delta * 0.2;
+        if (group2Ref.current) group2Ref.current.rotation.z += delta * 0.15;
     });
 
     return (
         <group>
-            {/* Website & App (X-Y Plane Orbit) */}
-            <group ref={planet1Ref}>
-                <TechPlanet name="Website" color="#06b6d4" position={[0, 0, 0]} />
-            </group>
-            <group ref={planet2Ref}>
-                <TechPlanet name="App" color="#a855f7" position={[0, 0, 0]} />
+            {/* Inner Ring Group - Matching LuminousCore Ring 1 */}
+            {/* Rotation: [Math.PI / 3, 0, 0], Radius: 3.5 */}
+            <group rotation={[Math.PI / 3, 0, 0]}>
+                <group ref={group1Ref}>
+                    <TechPlanet name="Website" color="#06b6d4" position={[3.5, 0, 0]} />
+                    <TechPlanet name="App" color="#a855f7" position={[-3.5, 0, 0]} />
+                </group>
             </group>
 
-            {/* Automation & Labs (Z-Y Plane Orbit - "Vertical" roughly) */}
-            <group ref={planet3Ref}>
-                <TechPlanet name="Automation" color="#10b981" position={[0, 0, 0]} size={0.5} />
-            </group>
-            <group ref={planet4Ref}>
-                <TechPlanet name="Digital Transformation" color="#FACC15" position={[0, -4, 0]} size={0.6} />
+            {/* Outer Ring Group - Matching LuminousCore Ring 2 */}
+            {/* Rotation: [-Math.PI / 3, Math.PI / 2, 0], Radius: 4.5 using Torus args but let's check visual placement */}
+            <group rotation={[-Math.PI / 3, Math.PI / 2, 0]}>
+                <group ref={group2Ref}>
+                    <TechPlanet name="Automation" color="#10b981" position={[4.5, 0, 0]} size={0.5} />
+                    <TechPlanet name="Digital Transformation" color="#FACC15" position={[-4.5, 0, 0]} size={0.6} />
+                </group>
             </group>
         </group>
     );

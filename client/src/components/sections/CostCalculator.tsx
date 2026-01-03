@@ -17,7 +17,6 @@ const countryCodes = [
 export function CostCalculator() {
     const [showStarterForm, setShowStarterForm] = useState(false);
     const [starterCompleted, setStarterCompleted] = useState(false);
-    const [isSubmitting, setIsSubmitting] = useState(false);
     const [starterData, setStarterData] = useState({
         name: '',
         email: '',
@@ -43,7 +42,6 @@ export function CostCalculator() {
     const handleStarterSubmit = async () => {
         if (!starterData.name || !starterData.email) return;
 
-        setIsSubmitting(true);
         const success = await submitToGoogleForm({
             name: starterData.name,
             email: starterData.email,
@@ -55,8 +53,6 @@ export function CostCalculator() {
             timeline: 'Standard',
             additionalDetails: 'Starter Package Claim via Website'
         });
-
-        setIsSubmitting(false);
 
         if (success) {
             setStarterCompleted(true);

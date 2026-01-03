@@ -89,11 +89,8 @@ export function ProjectWizard() {
 
     const nextStep = () => setStep(prev => prev + 1);
     const prevStep = () => setStep(prev => prev - 1);
-    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleSubmit = async () => {
-        setIsSubmitting(true);
-
         // Format complex data for "Additional Details"
         let details = `Comfort Level: ${formData.comfortLevel || 'N/A'}\n`;
         if (formData.additionalInfo) details += `User Note: ${formData.additionalInfo}\n`;
@@ -118,8 +115,6 @@ export function ProjectWizard() {
             timeline: formData.timeline || 'Not specified',
             additionalDetails: details
         });
-
-        setIsSubmitting(false);
 
         if (success) {
             setCompleted(true);

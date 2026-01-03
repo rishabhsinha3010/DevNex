@@ -2,15 +2,15 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, Sun, Moon, Sparkles } from 'lucide-react';
-import { useTheme } from '../../context/ThemeContext';
+import { Menu, X, ChevronDown, Sparkles } from 'lucide-react';
+
 import { Button } from '../ui/Button';
 import { cn } from '../../lib/utils';
 
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const { theme, toggleTheme } = useTheme();
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -83,13 +83,7 @@ export function Navbar() {
                         <Button variant="primary" onClick={() => window.location.href = '/start'}>
                             Get Started
                         </Button>
-                        <button
-                            onClick={toggleTheme}
-                            className="p-2 rounded-full hover:bg-white/10 text-white transition-colors"
-                            aria-label="Toggle theme"
-                        >
-                            {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-                        </button>
+
                     </div>
 
                     {/* Mobile Menu Button */}

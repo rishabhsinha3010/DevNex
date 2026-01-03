@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { User, Mail, Phone, Check, ChevronRight } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { submitToGoogleForm } from '../../services/formService';

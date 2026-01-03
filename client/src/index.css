@@ -32,25 +32,7 @@
     color-scheme: dark;
 }
 
-[data-theme="light"] {
-    /* Light Mode - Inverted Colors */
-    --color-navy: #ffffff;
-    /* Background becomes white */
-    --color-white: #0f172a;
-    /* Text becomes dark slate */
-    --color-cyan: #0891b2;
-    /* Cyan becomes darker/readable */
-    --color-accent: #2563eb;
 
-    --color-gray-300: #374151;
-    /* Replaces light gray text with dark gray */
-    --color-gray-400: #4b5563;
-    --color-gray-500: #6b7280;
-    --color-gray-800: #f3f4f6;
-    /* Replaces dark gray backgrounds with light gray */
-
-    color-scheme: light;
-}
 
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
