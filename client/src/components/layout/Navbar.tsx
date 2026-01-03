@@ -7,7 +7,10 @@ import { Menu, X, ChevronDown, Sparkles } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { cn } from '../../lib/utils';
 
+import { useNavigate } from 'react-router-dom';
+
 export function Navbar() {
+    const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
@@ -80,7 +83,7 @@ export function Navbar() {
                         </Link>
                         <Link to="/about" className="text-gray-300 hover:text-cyan transition-colors font-medium">About Us</Link>
 
-                        <Button variant="primary" onClick={() => window.location.href = '/start'}>
+                        <Button variant="primary" onClick={() => navigate('/start')}>
                             Get Started
                         </Button>
 
@@ -129,7 +132,7 @@ export function Navbar() {
                             </Link>
                             <Link to="/about" onClick={() => setIsOpen(false)} className="block px-4 py-2 text-gray-300 hover:text-cyan font-medium">About Us</Link>
                             <div className="pt-6 px-4">
-                                <Button className="w-full" variant="primary" onClick={() => { setIsOpen(false); window.location.href = '/start'; }}>
+                                <Button className="w-full" variant="primary" onClick={() => { setIsOpen(false); navigate('/start'); }}>
                                     Get Started
                                 </Button>
                             </div>

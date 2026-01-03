@@ -3,7 +3,10 @@ import { Button } from '../ui/Button';
 import { ArrowRight, Play } from 'lucide-react';
 import { ThreeScene } from '../ui/ThreeScene';
 
+import { useNavigate } from 'react-router-dom';
+
 export function Hero() {
+    const navigate = useNavigate();
     return (
         <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-navy">
             {/* Background Gradients - The Light Source Effect */}
@@ -41,11 +44,11 @@ export function Hero() {
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-5">
-                            <Button size="lg" className="group text-lg px-8" onClick={() => window.location.href = '/start'}>
+                            <Button size="lg" className="group text-lg px-8" onClick={() => navigate('/start')}>
                                 Start Your Project
                                 <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                             </Button>
-                            <Button variant="outline" size="lg" className="text-lg px-8 group" onClick={() => window.location.href = '/portfolio'}>
+                            <Button variant="outline" size="lg" className="text-lg px-8 group" onClick={() => navigate('/portfolio')}>
                                 <Play className="mr-2 w-5 h-5 fill-current" />
                                 View Our Work
                             </Button>
