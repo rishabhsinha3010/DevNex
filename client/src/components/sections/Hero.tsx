@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 export function Hero() {
     const navigate = useNavigate();
     return (
-        <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-navy">
+        <header className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-navy">
             {/* Background Gradients - The Light Source Effect */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
                 {/* Main Beam hitting the text area */}
@@ -116,6 +116,6 @@ export function Hero() {
 
                 </div>
             </div>
-        </section>
+        </header>
     );
 }

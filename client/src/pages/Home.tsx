@@ -24,7 +24,7 @@ export function Home() {
         <main className="bg-navy min-h-screen text-white">
             <SEO
                 title="Home"
-                description="DevNex is India's #1 Digital Agency building world-class websites, apps, and automation solutions. Transform your business with future-ready tech."
+                description="DevNex is a leading digital agency in India providing affordable web development, app development, automation, and IT solutions for startups and businesses across Bharat."
                 canonicalUrl="https://devnex.in/"
                 schema={videoSchema}
             />
