@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Footer } from '../components/layout/Footer';
+
 import { Code, Smartphone, Layout, Server, Rocket, CheckCircle2, ArrowRight } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { SEO } from '../components/seo/SEO';
@@ -169,7 +169,7 @@ export function About() {
                 </div>
             </section>
 
-            <Footer />
+
         </div>
     );
 }

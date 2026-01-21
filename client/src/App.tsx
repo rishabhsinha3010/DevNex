@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Navbar } from './components/layout/Navbar';
+import { Footer } from './components/layout/Footer';
 import { Home } from './pages/Home';
 import { Labs } from './pages/Labs';
 import { ComingSoon } from './pages/ComingSoon';
@@ -31,6 +32,7 @@ function App() {
                         <Route path="/contact" element={<StartProject />} />
                         {/* Add other routes here */}
                     </Routes>
+                    <Footer />
                 </div>
             </Router>
         </HelmetProvider>

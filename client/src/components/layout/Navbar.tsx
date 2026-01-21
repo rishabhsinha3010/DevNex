@@ -7,10 +7,11 @@ import { Menu, X, ChevronDown, Sparkles } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { cn } from '../../lib/utils';
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export function Navbar() {
     const navigate = useNavigate();
+    const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
@@ -76,12 +77,42 @@ export function Navbar() {
                             </div>
                         </div>
 
-                        <Link to="/portfolio" className="text-gray-300 hover:text-cyan transition-colors font-medium">Portfolio</Link>
-                        <Link to="/pricing" className="text-gray-300 hover:text-cyan transition-colors font-medium">Pricing</Link>
-                        <Link to="/labs" className="text-gray-300 hover:text-purple-400 transition-colors font-medium flex items-center gap-1">
+                        <Link
+                            to="/portfolio"
+                            className={cn(
+                                "transition-colors font-medium",
+                                location.pathname === '/portfolio' ? "text-cyan drop-shadow-[0_0_8px_rgba(0,229,255,0.5)] border-b-2 border-cyan pb-1" : "text-gray-300 hover:text-cyan"
+                            )}
+                        >
+                            Portfolio
+                        </Link>
+                        <Link
+                            to="/pricing"
+                            className={cn(
+                                "transition-colors font-medium",
+                                location.pathname === '/pricing' ? "text-cyan drop-shadow-[0_0_8px_rgba(0,229,255,0.5)] border-b-2 border-cyan pb-1" : "text-gray-300 hover:text-cyan"
+                            )}
+                        >
+                            Pricing
+                        </Link>
+                        <Link
+                            to="/labs"
+                            className={cn(
+                                "transition-colors font-medium flex items-center gap-1",
+                                location.pathname === '/labs' ? "text-purple-400 drop-shadow-[0_0_8px_rgba(192,132,252,0.5)] border-b-2 border-purple-400 pb-1" : "text-gray-300 hover:text-purple-400"
+                            )}
+                        >
                             Labs <Sparkles className="w-3 h-3 text-purple-400" />
                         </Link>
-                        <Link to="/about" className="text-gray-300 hover:text-cyan transition-colors font-medium">About Us</Link>
+                        <Link
+                            to="/about"
+                            className={cn(
+                                "transition-colors font-medium",
+                                location.pathname === '/about' ? "text-cyan drop-shadow-[0_0_8px_rgba(0,229,255,0.5)] border-b-2 border-cyan pb-1" : "text-gray-300 hover:text-cyan"
+                            )}
+                        >
+                            About Us
+                        </Link>
 
                         <Button variant="primary" onClick={() => navigate('/start')}>
                             Get Started

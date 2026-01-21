@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, Play, Star } from 'lucide-react';
-import { Footer } from '../components/layout/Footer';
+
 import { SEO } from '../components/seo/SEO';
 
 interface Project {
@@ -262,7 +262,7 @@ export function Portfolio() {
                 </div>
             </section>
 
-            <Footer />
+
         </div>
     );
 }

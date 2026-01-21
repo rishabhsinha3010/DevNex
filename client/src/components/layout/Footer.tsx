@@ -56,16 +56,20 @@ export function Footer() {
                         <h3 className="text-white font-bold mb-6 font-heading text-lg">Services</h3>
                         <ul className="space-y-3 text-gray-400 text-sm">
                             {[
-                                { name: 'Web Development', href: '/services/web-dev' },
-                                { name: 'App Development', href: '/services/app-dev' },
-                                { name: 'Automation', href: '/coming-soon' },
-                                { name: 'Digital Transformation', href: '/coming-soon' },
-                                { name: 'E-commerce', href: '/coming-soon' },
+                                { name: 'Web Development', href: '#' },
+                                { name: 'App Development', href: '#' },
+                                { name: 'Automation', href: '#' },
+                                { name: 'Digital Transformation', href: '#' },
+                                { name: 'E-commerce', href: '#' },
                             ].map((item) => (
                                 <li key={item.name}>
-                                    <Link to={item.href} className="hover:text-cyan transition-colors">
+                                    <a
+                                        href={item.href}
+                                        className="hover:text-cyan transition-colors cursor-default"
+                                        onClick={(e) => e.preventDefault()}
+                                    >
                                         {item.name}
-                                    </Link>
+                                    </a>
                                 </li>
                             ))}
                         </ul>
