@@ -1,4 +1,4 @@
-import { CostCalculator } from '../components/sections/CostCalculator';
+import { ContactSection } from '../components/sections/CostCalculator';
 import { motion } from 'framer-motion';
 
 export function Pricing() {
@@ -9,7 +9,7 @@ export function Pricing() {
             exit={{ opacity: 0 }}
             className="pt-20 bg-navy min-h-screen"
         >
-            <CostCalculator />
+            <ContactSection />
         </motion.div>
     );
 }

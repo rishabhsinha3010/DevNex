@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Check, ChevronRight, ArrowLeft, User, Mail, Phone, Layout, Code2, Sparkles } from 'lucide-react';
+import { Check, ChevronRight, ArrowLeft, User, Mail, Phone, Layout, Code2, Sparkles, X } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { submitToGoogleForm } from '../../services/formService';
 
@@ -46,7 +46,7 @@ const countryCodes = [
     { code: '+49', label: 'DE', maxLength: 11 },
 ];
 
-export function ProjectWizard() {
+export function ProjectWizard({ onClose }: { onClose?: () => void }) {
     const [step, setStep] = useState(1);
     const [completed, setCompleted] = useState(false);
     const [formData, setFormData] = useState<FormData>({
@@ -490,80 +490,92 @@ export function ProjectWizard() {
     );
 
     return (
-        <div className="bg-white/5 border border-white/10 rounded-3xl p-6 backdrop-blur-md h-full flex flex-col relative overflow-hidden">
+        <div className="max-w-2xl mx-auto">
+            <div className="bg-white/5 border border-white/10 rounded-3xl p-5 backdrop-blur-md flex flex-col relative overflow-hidden">
 
-            {/* Referral Offer - Top Banner */}
-            <div className="mb-6 p-2 rounded-lg bg-white/5 border border-white/5 text-center">
-                <p className="text-xs text-gray-300">
-                    <Sparkles className="inline-block w-3 h-3 text-cyan mr-1" />
-                    Get <span className="text-cyan font-bold">20% total discount</span> if you refer us!
-                </p>
-            </div>
+                {/* Close button */}
+                {onClose && (
+                    <button
+                        onClick={onClose}
+                        className="absolute top-3 right-3 z-20 text-gray-500 hover:text-white transition-colors p-2 bg-black/20 hover:bg-black/40 rounded-full backdrop-blur-sm"
+                        title="Close Wizard"
+                    >
+                        <X className="w-4 h-4" />
+                    </button>
+                )}
 
-            {/* Header */}
-            <div className="mb-8">
-                <h3 className="text-2xl font-bold text-white mb-2">Custom Package</h3>
-                <p className="text-gray-400 text-sm">Tailored specifically for your unique requirements.</p>
-            </div>
-
-            {/* Step Indicator - Continuous */}
-            {!completed && (
-                <div className="mb-8 px-4 relative">
-                    {/* Continuous Line Background */}
-                    <div className="absolute top-1/2 left-0 w-full h-0.5 bg-white/10 -translate-y-1/2 z-0" />
-
-                    {/* Active Line Progress */}
-                    <div
-                        className="absolute top-1/2 left-0 h-0.5 bg-[#E4D00A] -translate-y-1/2 z-0 transition-all duration-300 ease-out"
-                        style={{ width: `${((step - 1) / 2) * 100}%` }}
-                    />
-
-                    {/* Circles */}
-                    <div className="relative z-10 flex justify-between">
-                        {[1, 2, 3].map((s) => {
-                            const isActive = s <= step;
-                            return (
-                                <div key={s} className="flex flex-col items-center">
-                                    <div
-                                        className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300 border-2 ${isActive
-                                            ? 'bg-navy border-[#E4D00A] text-[#E4D00A] shadow-[0_0_15px_rgba(228,208,10,0.4)] scale-110'
-                                            : 'bg-navy border-white/10 text-gray-500 scale-100'
-                                            }`}
-                                    >
-                                        {s}
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
+                {/* Referral Offer - Top Banner */}
+                <div className="mb-4 p-2 rounded-lg bg-white/5 border border-white/5 text-center">
+                    <p className="text-xs text-gray-300">
+                        <Sparkles className="inline-block w-3 h-3 text-cyan mr-1" />
+                        Get <span className="text-cyan font-bold">20% total discount</span> if you refer us!
+                    </p>
                 </div>
-            )}
 
-            <div className="flex-grow relative">
-                <AnimatePresence mode="wait">
-                    {completed ? (
-                        <motion.div key="success" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                            {renderSuccess()}
-                        </motion.div>
-                    ) : (
-                        <motion.div
-                            key={step}
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: -20 }}
-                            transition={{ duration: 0.3 }}
-                            className="h-full"
-                        >
-                            {step === 1 && renderStep1()}
-                            {step === 2 && renderStep2()}
-                            {step === 3 && renderStep3()}
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+                {/* Header */}
+                <div className="mb-6">
+                    <h3 className="text-xl font-bold text-white mb-1">Custom Package</h3>
+                    <p className="text-gray-400 text-xs">Tailored specifically for your unique requirements.</p>
+                </div>
+
+                {/* Step Indicator - Continuous */}
+                {!completed && (
+                    <div className="mb-6 px-4 relative">
+                        {/* Continuous Line Background */}
+                        <div className="absolute top-1/2 left-0 w-full h-0.5 bg-white/10 -translate-y-1/2 z-0" />
+
+                        {/* Active Line Progress */}
+                        <div
+                            className="absolute top-1/2 left-0 h-0.5 bg-[#E4D00A] -translate-y-1/2 z-0 transition-all duration-300 ease-out"
+                            style={{ width: `${((step - 1) / 2) * 100}%` }}
+                        />
+
+                        {/* Circles */}
+                        <div className="relative z-10 flex justify-between">
+                            {[1, 2, 3].map((s) => {
+                                const isActive = s <= step;
+                                return (
+                                    <div key={s} className="flex flex-col items-center">
+                                        <div
+                                            className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 border-2 ${isActive
+                                                ? 'bg-navy border-[#E4D00A] text-[#E4D00A] shadow-[0_0_15px_rgba(228,208,10,0.4)] scale-110'
+                                                : 'bg-navy border-white/10 text-gray-500 scale-100'
+                                                }`}
+                                        >
+                                            {s}
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                )}
+
+                <div className="flex-grow relative">
+                    <AnimatePresence mode="wait">
+                        {completed ? (
+                            <motion.div key="success" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                                {renderSuccess()}
+                            </motion.div>
+                        ) : (
+                            <motion.div
+                                key={step}
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -20 }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                {step === 1 && renderStep1()}
+                                {step === 2 && renderStep2()}
+                                {step === 3 && renderStep3()}
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </div>
+
+                {/* Footer Referral Offer */}
+
             </div>
-
-            {/* Footer Referral Offer */}
-
         </div>
     );
 }

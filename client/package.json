@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
-    "@react-three/fiber": "^9.4.2",
+    "@react-three/fiber": "^9.5.0",
     "@splinetool/loader": "^1.12.28",
     "@splinetool/react-spline": "^4.1.0",
     "@tailwindcss/vite": "^4.1.18",
@@ -34,7 +34,7 @@
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.11.0",
     "tailwind-merge": "^3.4.0",
-    "three": "^0.160.0",
+    "three": "^0.160.1",
     "vite-plugin-prerender": "^1.0.8"
   }
 }

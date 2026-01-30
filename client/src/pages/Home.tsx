@@ -2,7 +2,7 @@ import { Hero } from '../components/sections/Hero';
 import { TrustBar } from '../components/sections/TrustBar';
 import { ServiceHighlights } from '../components/sections/ServiceHighlights';
 import { SplineSection } from '../components/sections/SplineSection';
-import { CostCalculator } from '../components/sections/CostCalculator';
+import { ContactSection } from '../components/sections/CostCalculator';
 import { FAQ } from '../components/sections/FAQ';
 
 
@@ -33,8 +33,7 @@ export function Home() {
             <TrustBar />
             <ServiceHighlights />
             <SplineSection />
-            <CostCalculator />
-            <FAQ />
+            <ContactSection />
             <FAQ />
         </main>
     );
