@@ -75,16 +75,16 @@ function PricingCard({ name, color, price, originalPrice, discount, maintenance,
             </div>
 
             {/* Price Box */}
-            <div className={`mb-4 p-4 rounded-xl border ${colors.priceBox}`}>
+            <div className={`mb-4 p-4 rounded-xl border text-center ${colors.priceBox}`}>
                 {originalPrice && discount && (
-                    <div className="flex items-center gap-2 mb-2">
+                    <div className="flex items-center justify-center gap-2 mb-2">
                         <span className="text-gray-500 text-base line-through">{originalPrice}</span>
                         <span className="px-2 py-0.5 rounded bg-red-500/20 text-xs text-red-400 font-bold uppercase border border-red-500/20">
                             {discount}
                         </span>
                     </div>
                 )}
-                <div className="flex items-baseline gap-2 mb-1">
+                <div className="flex items-baseline justify-center gap-2 mb-1">
                     <span className="text-3xl font-extrabold text-white">{price}</span>
                     {price === '₹0' && (
                         <span className="text-gray-400 text-sm font-medium">Development Cost</span>
@@ -92,7 +92,7 @@ function PricingCard({ name, color, price, originalPrice, discount, maintenance,
                 </div>
                 {maintenance && (
                     <>
-                        <div className="h-px w-full bg-gradient-to-r from-gray-600/50 to-transparent my-3" />
+                        <div className="h-px w-full bg-gradient-to-r from-transparent via-gray-600/50 to-transparent my-3" />
                         <p className={`text-sm font-semibold ${colors.badgeText}`}>
                             {maintenance}
                         </p>
